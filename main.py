@@ -35,6 +35,28 @@ class SmartRouteApp:
         style.configure("Accent.TButton",font=("Helvetica",10,"bold"),padding=6,foreground=BG,background=PANEL,borderwidth=0)
         style.map("Ghost.TButton",background=[("active", "#1E1F28"), ("!disabled", PANEL)])
 
+    def _build_ui(self):
+        header =tk.Frame(self.root, bg=BG)
+        header.pack(pady=(20,5))
+        ttk.Label(header, text="🚗 SmartRoute+", style="Header.TLabel").pack()
+
+        route_frame= tk.LabelFrame(self.root, text="Route Management", bg=PANEL, fg=ACCENT,padx=12, pady=10, font=("Helvetica",10,"bold"))
+        route_frame.pack(fill="x", padx=20, pady=15)
+        tk.Label(route_frame, text="From:", fg=TEXT, bg=PANEL).grid(row=0,column=0, padx=8,pady=6)
+        self.entry_from= ttk.Entry(route_frame,width=18)
+        self.entry_from.grid(row=0,column=1,padx=8,pady=6)
+
+        tk.Label(route_frame, text="To:",fg=TEXT, bg=PANEL).grid(row=0,column=2,padx=8,pady=6)
+        self.entry_to= ttk.Entry(route_frame, width=18)
+        self.entry_to.grid(row=0,column=5,padx=8,pady=6)
+
+        tk.Label(route_frame, text="Distance (km:)",fg=TEXT, bg=PANEL).grid(row=0,column=4,padx=8,pady=6)
+        self.entry_distance= ttk.Entry(route_frame,width=10)
+        self.entry_distance.grid(row=0,column=5,padx=8,pady=6)
+
+        ttk.Button(route_frame,text="Add Route",style="Accent.TButton", command=self.add_route).grid(row=0, column=6, padx=10)
+        ttk.Button(round, text="View Routes", style="Ghost.TButton",command=self.view_routes).grid(row=0, column=7, padx=10)
+
 
                             
         
